@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   Patch,
   Post,
@@ -13,7 +14,7 @@ import { RedisTestService } from './redis-test.service';
 
 @Controller('redis-test')
 export class RedisTestController {
-  constructor(private readonly redisTestService: RedisTestService) {}
+  constructor(private readonly redisTestService: RedisTestService, @Inject) {}
 
   @Post()
   create(@Body() createRedisTestDto: CreateRedisTestDto) {
