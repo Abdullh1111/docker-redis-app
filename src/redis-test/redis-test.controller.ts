@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { RedisTestService } from './redis-test.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { CreateRedisTestDto } from './dto/create-redis-test.dto';
 import { UpdateRedisTestDto } from './dto/update-redis-test.dto';
+import { RedisTestService } from './redis-test.service';
 
 @Controller('redis-test')
 export class RedisTestController {
@@ -23,7 +31,10 @@ export class RedisTestController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRedisTestDto: UpdateRedisTestDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateRedisTestDto: UpdateRedisTestDto,
+  ) {
     return this.redisTestService.update(+id, updateRedisTestDto);
   }
 
