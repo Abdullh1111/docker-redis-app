@@ -19,9 +19,14 @@ export class RedisTestService {
     }
   }
 
-  findAll() {
+  async findAll() {
     try {
-      return this.prisma.post.findMany();
+      const datas = await this.prisma.post.findMany();
+      const total = await this.prisma.post.count();
+      return {
+        total: total,
+        data: datas,
+      };
     } catch (error) {
       console.log(error);
       throw new BadRequestException(
